@@ -1,0 +1,126 @@
+ local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/miroeramaa/TurtleLib/main/TurtleUiLib.lua"))()
+
+
+local window = library:Window("Milky sim | By heber")
+
+
+window:Label("Teleports", Color3.fromRGB(127, 143, 166))
+
+
+window:Button("Go to Candy isle", function()
+  Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-738.852112, 463.124542, -1150.81213, -0.999392271, 0, 0.0348687991, 0, 1, 0, -0.0348687991, 0, -0.999392271)
+end)
+
+window:Button("Go to beach isle", function()
+    Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-756.977844, 1171.87683, -951.409302, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+end)
+
+window:Button("Go to toy isle", function()
+    Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-833.498413, 2536.73804, -1007.49341, 0.699650288, -0.0448910445, -0.71307379, 0.212982461, 0.965754986, 0.148174688, 0.682002842, -0.255542666, 0.685251832)
+end)
+
+window:Button("Go to space isle", function()
+    Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-734.712769, 1905.849, -1112.29468, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+end)
+
+window:Button("Go to cyber isle", function()
+    Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-720.890137, 3127.11597, -1136.31897, 0.999847949, 0, 0.017436387, 0, 1, 0, -0.017436387, 0, 0.999847949)
+end)
+
+window:Label("Autofarm", Color3.fromRGB(127, 143, 166))
+
+window:Toggle("Auto Drink", false, function(t)
+if t then
+        _G.Drink = true
+        while wait() do
+            if _G.Drink then
+local Event = game:GetService("ReplicatedStorage").Knit.Services.MilkService.RE.Drink
+Event:FireServer()
+end
+end
+else
+    _G.Drink = false
+    end
+end)
+
+window:Toggle("Auto Sell", false, function(t)
+    if t then
+    _G.Sell = true
+    while wait() do
+        if _G.Sell then
+local Event = game:GetService("ReplicatedStorage").Knit.Services.SellService.RE.Sell
+Event:FireServer()
+end
+    end
+else
+_G.Sell = false
+end
+end)
+
+window:Label("Autobuys", Color3.fromRGB(127, 143, 166))
+
+
+window:Toggle("Auto buy milk", false, function(t)
+    if t then
+        _G.milky = true
+        while _G.milky == true do
+        local A_1 = "Milk"
+        local Event = game:GetService("ReplicatedStorage").Knit.Services.ShopService.RF.BuyAll
+        Event:InvokeServer(A_1)
+        wait()
+        end
+    else
+        _G.milky = false
+    end
+end)
+
+window:Toggle("Auto buy dna", false, function(t)
+    if t then
+      _G.dna = true
+        while _G.dna == true do
+        local A_1 = "DNA"
+        local Event = game:GetService("ReplicatedStorage").Knit.Services.ShopService.RF.BuyAll
+        Event:InvokeServer(A_1)
+        wait()
+        end
+    else
+        _G.dna = false
+    end
+end)
+
+window:Toggle("Auto buy class", false, function(t)
+    if t then
+      _G.class = true
+        while _G.class == true do
+        local A_1 = "Class"
+        local Event = game:GetService("ReplicatedStorage").Knit.Services.ShopService.RF.BuyAll
+        Event:InvokeServer(A_1)
+        wait()
+        end
+    else
+        _G.class = false
+end
+end)
+
+window:Label("Other", Color3.fromRGB(127, 143, 166))
+
+
+window:Button("Bring gems", function()
+    _G.AutoGems = true
+while _G.AutoGems do wait()
+
+    for i, v in pairs(game:GetService("Workspace"):GetDescendants()) do
+        if v.Name == "HumanoidRootPart" then
+            v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+else
+    _G.AutoGems = false
+end
+end
+end
+end)
+
+window:Button("Disable Popups", function()
+    if game.Players.LocalPlayer.PlayerGui:FindFirstChild("Popups") then
+    game.Players.LocalPlayer.PlayerGui:FindFirstChild("Popups"):Destroy()
+end
+end)
